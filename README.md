@@ -1,4 +1,4 @@
 # MiniProject2
-hello our names are lilly and neema! i hate this
+hello our names are lily and nima!
 
 
