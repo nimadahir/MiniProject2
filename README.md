@@ -1,3 +1,4 @@
 # MiniProject2
-hello our names are lilly and neema we are doing data science!
+hello our names are lilly and neema! i hate this
+
 
