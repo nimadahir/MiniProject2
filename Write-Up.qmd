@@ -1,0 +1,45 @@
+---
+title: "WriteUp"
+format: html
+---
+
+Ticketmaster Events in Minneapolis - December 2026
+
+Authors: Lily and Nima
+
+## Project Overview
+
+For our Mini Project 2, we used the Ticketmaster Discovery API to explore popular events happening in Minneapolis, Minnesota, during December 2026. Our goal was to collect and analyze event information to better understand the types of events available in the area and identify trends in the local entertainment scene.
+
+We chose Ticketmaster because it provides access to a wide variety of event information, including event names, artists, genres, dates, venues, and ticket prices. We thought this would be an interesting dataset to explore because music and live entertainment are a big part of our everyday lives!
+
+## Data Source
+
+Our primary data source was the Ticketmaster Discovery API.
+
+We used the API to search for multiple popular events in Minneapolis during December 2026 and retrieve information about individual events.
+
+## Tools and Packages
+
+We used R and the following packages to collect, organize, and analyze our data, httr2 and httr.
+
+
+Our final dataset contains information about popular events in Minneapolis during December 2026. Each row represents an individual event, and each column describes a characteristic of that event.
+
+Some of the information collected includes: Event Name, Artist, Genre, Date
+
+The dataset was organized into a tibble using R, allowing us to easily clean, summarize, and analyze the information. Which was then saved in a CSV.
+
+
+## Data Acquisition and Analysis
+
+We used the Ticketmaster Discovery API to retrieve event data based on our selected location and date range. After collecting the data, we used R to clean, organize, and transform the results into a structured tibble.
+
+
+## Collaboration 
+
+In terms of the collaboration methods we used, we preferred working together in person and going through the qmd file simultaneously. Depending on what stage of the project we were at and who wanted to type, we would take turns making changes and regularly pushing and pulling so that both of our local R environments and files stayed up to date. Although we did not create separate issues, branches, or pull requests in GitHub, we found that this approach worked well for our project.
+
+One of the biggest benefits of working this way was that we could talk through our ideas, ask each other questions, and work through problems together. We both had questions about the content and structure of the project, so it made more sense to sit down and figure things out together rather than divide the work completely. Regularly pushing and pulling also allowed us both to stay updated without having one person be responsible for all the typing or changes. We also reached out to classmates when we were confused about certain parts of the project, which was another helpful way to collaborate.
+
+Overall, we really liked this approach because it allowed both of us to understand the project and stay involved in every stage of the process. In the future, especially with a larger project or one where we are working more independently, using GitHub issues, branches, and pull requests could help us organize tasks, track progress, and avoid potential merge conflicts. However, for this particular project, we found that collaborating in person and working through things together was effective and helped us both stay on the same page.
