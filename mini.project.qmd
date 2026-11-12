@@ -1,0 +1,80 @@
+---
+title: "mini.project2"
+format: html
+editor: visual
+---
+
+```{r}
+#| include: FALSE
+
+library(tidyverse)
+library(stringr)
+library(httr2)
+library(httr)
+library(readr)
+```
+
+```{r}
+omdb_api_key <- readLines("/home/lilycpenniman/Mini project 2/ticketmaster_api_key.txt")
+```
+
+```{r}
+ids <- c("Z7r9jZ1A70buY", "vv1AkZkoNGkdI71Xg", "Z7r9jZ1A70IJf", "Z7r9jZ1A70_O7", "vv1AkZkowGkdjZvR0", "vvG1bZ_GKWHeTy", "vv17bZ_KGkDlX7Um", "Z7r9jZ1A7qV_3", "Z7r9jZ1AA7kJF", "vv17bZ_KGkDlTVUM", "Z7r9jZ1AAefC7", "vv17bZ_KGkDiv7M8", "vvG1bZ_52FpL_T", "vvG1bZ_GRKnxNW", "Z7r9jZ1A70bO-", "vvG1bZ_5fU2jm6", "vv1AkZk4AGkdmcsrB", "Z7r9jZ1AA7AbS", "Z7r9jZ1AAvEG3", "Z7r9jZ1A70bOx", "Z7r9jZ1A7xpFs", "Z7r9jZ1AAAAGg", "vv1AkZkfYGkd_ao6R", "Z7r9jZ1AAep0N", "LvZ18QIzvdsAJarywahzU", "vv17bZ_oGkRp-lc8", "Z7r9jZ1AA7J8g", "vv17bZ_3Gkl6IicO", "Z7r9jZ1AAZeqV", "vv1AkZk46GkeT_hDk", "vv1AkZkfbGkelyD6X", "vv17bZ_oGkn-ppo4", "vv17bZ_4GkMY9mOa")
+
+artist <- character(33)
+genre <- character(33)
+venue <- character(33)
+time <- character(33)
+date <- character(33)
+ticket_status <- character(33)
+
+for(i in 1:33) {
+  url1 <- str_c("https://app.ticketmaster.com/discovery/v2/events/",ids[i],".json?apikey=n6u6dP1Mb5C8Hth2yWCYekxMh1tRmFPb")
+  one_event <- GET(url1)
+  details <- content(one_event, "parse")
+  artist[i] <- details$name
+  genre[i] <- details$classifications[[1]]$genre$name
+  venue[i] <- details$`_embedded`$venues[[1]]$name
+  time[i] <- details$dates$start$localTime
+  date[i] <- details$dates$start$localDate
+  ticket_status[i] <- details$dates$status$code
+}
+
+ticket_data2 <- tibble(artist, genre, venue, time, date, ticket_status)
+ticket_data2
+```
+
+```{r}
+event_information <- function(event_ids) {
+  number_of_ids = length(ids)
+  artist <- character(number_of_ids)
+  genre <- character(number_of_ids)
+  venue <- character(number_of_ids)
+  time <- character(number_of_ids)
+  date <- character(number_of_ids)
+  ticket_status <- character(number_of_ids)
+
+for(i in 1:number_of_ids) {
+  url1 <- str_c("https://app.ticketmaster.com/discovery/v2/events/",ids[i],".json?apikey=n6u6dP1Mb5C8Hth2yWCYekxMh1tRmFPb")
+  one_event <- GET(url1)
+  details <- content(one_event, "parse")
+  artist[i] <- details$name
+  genre[i] <- details$classifications[[1]]$genre$name
+  venue[i] <- details$`_embedded`$venues[[1]]$name
+  time[i] <- details$dates$start$localTime
+  date[i] <- details$dates$start$localDate
+  ticket_status[i] <- details$dates$status$code
+}
+
+ticket_data3 <- tibble(artist, genre, venue, time, date, ticket_status)
+ticket_data3
+}
+```
+
+```{r}
+event_information(ids)
+```
+
+```{r}
+write_csv(ticket_data2, "ticket_data.csv")
+```
